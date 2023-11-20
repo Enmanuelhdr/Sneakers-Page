@@ -1,26 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" >
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Css/Bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    {{#if siteActive}}
-    <link rel="stylesheet" href="/Css/Styles/style_site.css">
-    {{/if}}
-    {{#if signUpActive}}
-    <link rel="stylesheet" href="/Css/Styles/style_SignUp.css">
-    {{/if}}
-    {{#if loginActive}}
-     <link rel="stylesheet" href="/Css/Styles/style_Login.css">
-     {{/if}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SneakPeak</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" >
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+ <!--navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
         SneakPeak
     </a>
@@ -65,10 +57,49 @@
     </form>
   </div>
   </nav>
-  </header>
-    {{{body}}}
 
-<footer class="bg-light text-center text-lg-start">
+<!--carrusel-->
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="./img/Nikes.webp" alt="Oferta 1">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Oferta 1</h5>
+            <p>Descripción de la oferta 1</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="./img/Jordans.webp" alt="Oferta 2">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Oferta 2</h5>
+            <p>Descripción de la oferta 2</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="./img/Adidas.webp" alt="Oferta 3">
+        <div class="carousel-caption d-none d-md-block">
+            <h5>Oferta 3</h5>
+            <p>Descripción de la oferta 3</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Siguiente</span>
+    </a>
+  </div>
+
+  <!--footer-->
+  <footer class="bg-light text-center text-lg-start">
     <div class="container p-4">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
@@ -118,16 +149,11 @@
     </div>
   </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="/Js/Bootstrap/js/bootstrap.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    {{#if signUpActive}}
-    <script src="/Js/scripts/script_signUp.js"></script>
-    {{/if}}
-    {{#if loginActive}}
-    <script src="/Js/scripts/script_Login.js"></script>
-    {{/if}}
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
 </body>
 </html>

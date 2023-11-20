@@ -1,0 +1,47 @@
+/*Body modificado */
+body {
+    margin: 0;
+    padding: 0;
+    background: url(/public/img/stock.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: #FBF0E1;
+    font-family: 'Oswald', sans-serif;
+}
+
+.login-container {
+    margin-top: 5%;
+}
+
+.login-form {
+  width: 400px;
+  padding: 20px;
+  border: 4px solid #DA291C;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(251, 240, 225, 0.9);
+  text-align: left;
+}
+
+.login-form label {
+    color: #DA291C;
+}
+
+.login-form-btn {
+    background-color: #DA291C;
+    color: #FFFFFF;
+}
+
+.reset-password-link,
+.register-link {
+    color: #A6192E;
+}
+
+/* Estilos para validación de forms */
+.valid-feedback {
+    color: #2DB218;
+}
+
+.invalid-feedback {
+    color: #A6192E;
+}

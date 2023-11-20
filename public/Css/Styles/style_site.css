@@ -1,0 +1,140 @@
+/* Estilos para dispositivos móviles y tablets */
+@media (max-width: 768px) {
+    /* Ajustar estilos del navbar */
+    .navbar {
+      background-color: #333;
+    }
+    .navbar-brand {
+      color: #fff;
+    }
+    .navbar-nav .nav-link {
+      color: #fff;
+    }
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+  
+    /* Ajustar estilos del footer */
+    .footer {
+      background-color: #333;
+      color: #fff;
+    }
+    .footer a {
+      color: #fff;
+    }
+  }
+  
+  /* Estilos generales */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Estilos del navbar */
+  .navbar {
+    background-color: #f8f9fa;
+    padding: 10px;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    font-weight: bold;
+  }
+  
+  /* Estilos del carrusel */
+  .carousel-item img {
+    color:#333;
+    height: 800px;
+    object-fit: fill;
+  }
+  
+  /* Estilos del footer */
+  .footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .footer h5 {
+    font-weight: bold;
+  }
+  
+  .footer a {
+    color: #333;
+  }
+  
+  /* Estilos de iconos */
+  .navbar-toggler-icon,
+  .footer a:before {
+    font-family: "Font Awesome";
+  }
+  
+  /* Estilos de colores y diseño de enlaces */
+  .footer a {
+    display: inline-block;
+    margin-right: 10px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    color: #007bff;
+  }
+  
+  /* Estilos visuales coherentes */
+  h1, h2, h3, h4, h5, h6 {
+    color: #333;
+  }
+  
+  p {
+    color: #555;
+  }
+  
+  /* Iconos personalizados */
+  .navbar-toggler-icon:before {
+    content: "\f0c9";
+  }
+  
+  .footer a:before {
+    margin-right: 5px;
+  }
+  
+  .footer .fa-facebook:before {
+    content: "\f09a";
+  }
+  
+  .footer .fa-twitter:before {
+    content: "\f099";
+  }
+  
+  .footer .fa-instagram:before {
+    content: "\f16d";
+  }
+  
+  .footer .fa-envelope:before {
+    content: "\f0e0";
+  }
+  
+  .carousel-item .image-container {
+    width: 100%;
+    padding-top: 56.25%; 
+    position: relative;
+  }
+  
+  .carousel-item .image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: inherit;
+  }
+
+  .search-form, .search-button {
+    margin-right: 10px;
+  }
+  
+  .navbar-nav.ml-auto .nav-item {
+    margin-right: 5px;
+  }

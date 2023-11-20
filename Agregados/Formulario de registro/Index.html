@@ -1,20 +1,28 @@
-<main>
-    <div class="container">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <title>Registro de Usuario</title>
+</head>
+<body>
+  <div class="container">
     <div class="card">
-        <form action="/signUp" method="post">
       <div class="form-group">
         <label for="firstname">Nombre:</label>
-        <input type="text" id="firstname" name="firstName" onkeypress="return soloLetras(event)">
+        <input type="text" id="firstname" name="firstname" onkeypress="return soloLetras(event)">
       </div>
 
       <div class="form-group">
         <label for="lastname">Apellidos:</label>
-        <input type="text" id="lastname" name="lastName" onkeypress="return soloLetras(event)">
+        <input type="text" id="lastname" name="lastname" onkeypress="return soloLetras(event)">
       </div>
 
       <div class="form-group">
         <label for="birthdate">Fecha de Nacimiento:</label>
-        <input type="date" id="birthdate" name="dateOfBirth">
+        <input type="date" id="birthdate" name="birthdate">
       </div>
 
       <div class="form-group">
@@ -30,8 +38,8 @@
       <div class="form-group">
         <label for="gender">Género:</label>
         <select id="gender" name="gender">
-          <option value="0">Hombre</option>
-          <option value="1">Mujer</option>
+          <option 0="masculino">Hombre</option>
+          <option 1="mujer">Mujer</option>
         </select>
       </div>
 
@@ -42,20 +50,22 @@
 
       <div class="form-group">
         <label for="confirm-password">Confirmar Contraseña:</label>
-        <input type="password" id="confirm-password" name="confirmPassword">
+        <input type="password" id="confirm-password" name="confirm-password">
       </div>
 
       <div class="btn-container">
         <button class="btn btn-cancel" onclick="cancel()">Cancelar</button>
-        <button type="submit" class="btn btn-register" onclick="register()">Registrar</button>
+        <button class="btn btn-register" onclick="register()">Registrar</button>
       </div>
-</form>
+
       <!-- Mensajes de Error y Éxito -->
       <div id="error-message" class="error"></div>
       <div id="success-message" class="success"></div>
 
-      <p>¿Ya tienes una cuenta? <a href="/Login">Inicia sesión</a></p>
-    
+      <p>¿Ya tienes una cuenta? <a href="#">Inicia sesión</a></p>
     </div>
   </div>
-</main>
+
+  <script src="Index.js"></script>
+</body>
+</html>
