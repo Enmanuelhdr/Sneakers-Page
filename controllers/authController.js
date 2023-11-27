@@ -1,5 +1,7 @@
 const User = require("../models/auth/User");
 const bcrypt = require("bcryptjs");
+const generartoken = require("../helpers/token")
+
 
 exports.GetSignUp = (req, res, next) => {
   res.render("auth/signUp", {
@@ -35,18 +37,6 @@ exports.PostSignUp = async (req, res, next) => {
     req.flash("errors", "An error has occurred. Contact the administrator");
     return res.redirect("/eploto");
   }
-
-  // try {
-  //   const result = await User.findOne({ where: { username } });
-  //   if (result) {
-  //     req.flash("errors", "This username is taken, try another.");
-  //     return res.redirect("/signup");
-  //   }
-  // } catch (err) {
-  //   console.log(err);
-  //   req.flash("errors", "An error has occurred. Contact the administrator");
-  //   return res.redirect("/signup");
-  // }
 
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
@@ -86,17 +76,28 @@ exports.PostLogin = async (req, res, next) => {
       return res.redirect("/nocorreo");
     }
 
-    // if (user.isActive == false) {
-    //   req.flash("errors", "Have to verify your account.");
-    //   return res.redirect("/");
-    // }
-
     const result = await bcrypt.compare(password, user.password);
     if (result) {
       req.session.isLoggedIn = true;
       req.session.user = user;
+
+      // Crear token al iniciar sesion
       return req.session.save((err) => {
-        console.log(err);
+        if (err) {
+          console.error("Error al guardar la sesión:", err);
+          res.status(500).send("Error interno del servidor");
+          return;
+        }
+      
+        const oneHourInMilliseconds = 3600000;
+        const token = generartoken({ id: user.id, firstName: user.firstName })
+      
+        res.cookie("token", token, {
+          httpOnly: true,
+          expires: new Date(Date.now() + oneHourInMilliseconds),
+        });
+        console.log('Entrando');
+        console.log(token);
         res.redirect("/adentroo");
       });
     }
