@@ -2,8 +2,11 @@ const express = require("express");
 const { engine } = require("express-handlebars");
 const path = require("path");
 const sequelize = require("./context/appContext");
-const flash = require("connect-flash");
 const session = require("express-session");
+const flash = require("connect-flash");
+const multer = require("multer");
+const { v4: uuidv4 } = require("uuid");
+
 
 const User = require("./models/auth/User");
 
@@ -30,6 +33,7 @@ app.set("views", "views");
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/images",express.static(path.join(__dirname, "images")));
 
 app.use(session({
   secret:"Hi Leo",
@@ -66,6 +70,18 @@ app.use(async (req,res,next)=>{
   res.locals.hasWarningMessages = warning.length > 0;
   next();
 })
+
+const imageStorage = multer.diskStorage({
+  destination:(req,file,cb)=>{
+    cb(null,"images");
+  },
+  filename:(req,file,cb)=>{
+    cb(null,`${uuidv4()}-${file.originalname}`);
+  }
+});
+
+app.use(multer({ storage: imageStorage }).single("Image"));
+
 
 app.use(authRouter);
 app.use("/", errorController.Get404);
