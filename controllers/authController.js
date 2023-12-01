@@ -7,6 +7,8 @@ exports.GetSignUp = (req, res, next) => {
   res.render("auth/signUp", {
     pageTitle: "Sign Up",
     signUpActive: true,
+    headerBar: false,
+    footerBar: false
   });
 };
 
@@ -62,6 +64,8 @@ exports.GetLogin = (req, res, next) => {
   res.render("auth/Login", {
     pageTitle: "Login",
     loginActive: true,
+    headerBar: false,
+    footerBar: false
   });
 };
 
@@ -121,5 +125,7 @@ exports.GetSite = (req, res, next) => {
   res.render("auth/site", {
     pageTitle: "Sneaker Page",
     siteActive: true,
+    headerBar: true,
+    footerBar: true
   });
 };
