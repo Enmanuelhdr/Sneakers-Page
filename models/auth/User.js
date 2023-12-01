@@ -33,7 +33,7 @@ const User = sequelize.define("user",{
         type:DataTypes.STRING,
         allowNull:true,
     },
-    Gender:{
+    gender:{
         type:DataTypes.BOOLEAN,
         allowNull:true,
     },
