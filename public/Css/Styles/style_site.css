@@ -47,7 +47,7 @@
   .carousel-item img {
     color:#333;
     height: 800px;
-    object-fit: fill;
+    object-fit: cover;
   }
   
   /* Estilos del footer */
