@@ -105,3 +105,10 @@ exports.PostDeleteRegion = async (req, res, next) => {
     console.log(error);
   }
 };
+
+exports.GetAboutUs = (req, res, next) => {
+  res.render("site/AboutUs", {
+    pageTitle: "About us",
+    AboutUsActive: true,
+  });
+};
