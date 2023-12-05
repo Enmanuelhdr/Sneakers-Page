@@ -85,7 +85,7 @@ const imageStorage = multer.diskStorage({
   }
 });
 
-app.use(multer({ storage: imageStorage }).single("Image"));
+app.use(multer({ storage: imageStorage }).single("image"));
 
 
 app.use(authRouter);

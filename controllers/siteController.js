@@ -1,5 +1,26 @@
 const Sneaker = require("../models/site/sneakers");
 
+exports.GetSite = async (req, res, next) => {
+
+  try {
+    const result = await Sneaker.findAll();
+
+    const sneakers = result.map((result) => result.dataValues);
+
+    res.render("site/site", {
+      pageTitle: "SneakPeak",
+      sneakers:sneakers,
+      sneakersPage: true,
+      headerBar: true,
+      footerBar: true,
+      hasSneakers: sneakers.length > 0,
+      // RegionActive: true,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 exports.GetSneakers = async (req, res, next) => {
   try {
     const result = await Sneaker.findAll();
@@ -8,7 +29,7 @@ exports.GetSneakers = async (req, res, next) => {
 
     res.render("site/sneakers", {
       pageTitle: "SneakPeak",
-      sneaker: sneakers,
+      sneakers:sneakers,
       sneakersPage: true,
       headerBar: true,
       footerBar: true,
@@ -48,7 +69,7 @@ exports.PostAddSneaker = async (req, res, next) => {
       description,
       stock,
     });
-    return res.redirect("/");
+    return res.redirect("/SneakerCrud");
   } catch (error) {
     console.log(error);
   }
@@ -129,7 +150,7 @@ exports.GetCrudSneakers= async (req, res, next) => {
 };
 
 exports.GetSneakersInfo = async (req, res, next) => {
-  res.render("site/sneaker_info", {
+  res.render("site/sneaker-info", {
     pageTitle: "Sneakers",
     sneakerInfo: true,
     headerBar: true,

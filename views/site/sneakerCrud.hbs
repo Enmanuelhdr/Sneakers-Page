@@ -1,34 +1,37 @@
 <div id="form-container">
+    <form enctype="multipart/form-data" method="post" action="{{#if editMode}}/edit-sneaker{{else}}/add-sneaker{{/if}}" >
     <label for="imagen">Imagen:</label>
-    <input type="text" id="imagen" required>
+    <input type="file" id="image" name="image" required>
 
     <label for="modelo">Modelo:</label>
-    <input type="text" id="modelo" required>
+    <input type="text" id="model" name="model" required>
 
     <label for="marca">Marca:</label>
-    <input type="text" id="marca" required>
+    <input type="text" id="brand" name="brand">
 
     <label for="genero">Género:</label>
-    <input type="text" id="genero" required>
+    <input type="number" id="gender" name="gender"required>
 
     <label for="material">Material:</label>
-    <input type="text" id="material" required>
+    <input type="text" id="material" name="material" required>
 
     <label for="precio">Precio:</label>
-    <input type="number" id="precio" required>
+    <input type="number" id="price" name="price" required>
 
     <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" required></textarea>
+    <textarea id="description" name="description" required></textarea>
 
     <label for="stock">Stock:</label>
-    <input type="number" id="stock" required>
+    <input type="number" id="stock" name="stock" required>
 
-    <button onclick="agregarRegistro()">Guardar</button>
+    <button type="submit" onclick="agregarRegistro()">Guardar</button>
     <button onclick="limpiarFormulario()">Cancelar</button>
+
+    </form>
 
     <div id="mensaje" class="success-message"></div>
 </div>
-<div class="tabla-container">
+{{!-- <div class="tabla-container">
     <table id="tabla">
         <thead>
             <tr>
@@ -74,4 +77,4 @@
         </thead>
         <tbody id="tbody"></tbody>
     </table>
-</div>
+</div> --}}
