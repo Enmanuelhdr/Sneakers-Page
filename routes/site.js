@@ -5,6 +5,8 @@ const siteController = require("../controllers/siteController");
 
 router.get("/AboutUs",siteController.GetAboutUs);
 
-router.get("/Seneaker",siteController.GetSneakers);
+router.get("/Sneaker",siteController.GetSneakers);
+router.get("/Sneaker-info",siteController.GetSneakersInfo);
+router.get("/SneakerCrud",siteController.GetCrudSneakers);
 
 module.exports = router;
