@@ -26,7 +26,7 @@ input {
     box-sizing: border-box;
 }
 
-button {
+.button {
     background-color: #DA291C;
     color: #FBF0E1;
     padding: 10px;

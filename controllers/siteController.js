@@ -69,6 +69,7 @@ exports.PostAddSneaker = async (req, res, next) => {
       description,
       stock,
     });
+    req.flash("success", "Sneaker added successfully");
     return res.redirect("/SneakerCrud");
   } catch (error) {
     console.log(error);

@@ -6,8 +6,6 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
-const cookieParser = require('cookie-parser');
-
 
 const User = require("./models/auth/User");
 
@@ -20,7 +18,6 @@ const errorController = require("./controllers/ErrorController");
 const authRouter = require("./routes/auth");
 const siteRouter = require("./routes/site");
 
-app.use(cookieParser());
 
 app.engine(
     "hbs",
@@ -73,6 +70,10 @@ app.use(async (req,res,next)=>{
   res.locals.hasSuccessMessages = success.length > 0;
   res.locals.warningMessages = warning;
   res.locals.hasWarningMessages = warning.length > 0;
+
+  if (req.session.isLoggedIn) {
+    res.locals.LoggedIn = "1";
+}
   next();
 })
 
