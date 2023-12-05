@@ -12,5 +12,7 @@ router.post("/adentro",authController.PostLogin);
 router.get("/carrito", rutaLoginValidacion, carritoController.GetCarrito);
 router.get("/",authController.GetSite);
 
+//hola
+
 
 module.exports = router;
