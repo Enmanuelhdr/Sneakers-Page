@@ -113,6 +113,8 @@ exports.GetAboutUs = (req, res, next) => {
   res.render("site/AboutUs", {
     pageTitle: "About us",
     AboutUsActive: true,
+    headerBar: true,
+    footerBar: true,
   });
 };
 
