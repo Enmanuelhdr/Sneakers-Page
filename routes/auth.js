@@ -10,8 +10,9 @@ router.post("/signUp",authController.PostSignUp);
 router.get("/Login",authController.GetLogin);
 router.post("/adentro",authController.PostLogin);
 router.get("/carrito", rutaLoginValidacion, carritoController.GetCarrito);
+router.post("/logout",authController.PostLogout);
 
-//hola
+
 
 
 module.exports = router;

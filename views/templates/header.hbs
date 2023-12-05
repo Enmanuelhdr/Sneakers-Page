@@ -30,11 +30,11 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         {{#if logueado}}
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalWithSession">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalNoSession">
                             <span class="bi bi-person-circle"></span>
                         </a>
                         {{else}}
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalNoSession">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalWithSession">
                             <span class="bi bi-person-circle"></span>
                         </a>
                         {{/if}}
@@ -93,9 +93,11 @@
                         <li><a href="/config" class="text-dark"><em>Configuración</em></a></li>
                     </ul>
                 </div>
+                <form action="/logout" method="post">
                 <div class="modal-footer justify-content-center">
-                    <button type="button" href="#logout" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
+                    <button type="submit" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
                 </div>
+                </form>
             </div>
         </div>
     </div>
