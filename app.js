@@ -18,6 +18,7 @@ const errorController = require("./controllers/ErrorController");
 
 
 const authRouter = require("./routes/auth");
+const siteRouter = require("./routes/site");
 
 app.use(cookieParser());
 
@@ -88,6 +89,7 @@ app.use(multer({ storage: imageStorage }).single("Image"));
 
 
 app.use(authRouter);
+app.use(siteRouter);
 app.use("/", errorController.Get404);
 
 

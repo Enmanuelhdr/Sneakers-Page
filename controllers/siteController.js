@@ -9,6 +9,9 @@ exports.GetSneakers = async (req, res, next) => {
     res.render("site/sneakers", {
       pageTitle: "SneakPeak",
       sneaker: sneakers,
+      sneakersPage: true,
+      headerBar: true,
+      footerBar: true,
       hasSneakers: sneakers.length > 0,
       // RegionActive: true,
     });
@@ -104,4 +107,31 @@ exports.PostDeleteRegion = async (req, res, next) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+exports.GetAboutUs = (req, res, next) => {
+  res.render("site/AboutUs", {
+    pageTitle: "About us",
+    AboutUsActive: true,
+  });
+};
+
+exports.GetCrudSneakers= async (req, res, next) => {
+    res.render("site/sneakerCrud", {
+      pageTitle: "SneakersCrud",
+      sneakerCrud: true,
+      headerBar: true,
+      footerBar: true,
+      // RegionActive: true,
+    });
+};
+
+exports.GetSneakersInfo = async (req, res, next) => {
+  res.render("site/sneaker_info", {
+    pageTitle: "Sneakers",
+    sneakerInfo: true,
+    headerBar: true,
+    footerBar: true,
+    // RegionActive: true,
+  });
 };

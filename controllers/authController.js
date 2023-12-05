@@ -102,7 +102,7 @@ exports.PostLogin = async (req, res, next) => {
         });
         console.log('Entrando');
         console.log(token);
-        res.redirect("/adentroo");
+        res.redirect("/");
       });
     }
     req.flash("errors", "Invalid Login, Please try again.");

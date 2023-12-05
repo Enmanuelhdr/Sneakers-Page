@@ -29,12 +29,18 @@
             <form class="form-inline ml-auto">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/Login">
+                        {{#if logueado}}
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalWithSession">
                             <span class="bi bi-person-circle"></span>
                         </a>
+                        {{else}}
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalNoSession">
+                            <span class="bi bi-person-circle"></span>
+                        </a>
+                        {{/if}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/carrito">
+                        <a class="nav-link" href="#cart">
                             <span class="bi bi-cart-fill"></span>
                         </a>
                     </li>
@@ -46,4 +52,51 @@
             </form>
         </div>
     </nav>
+    {{!-- Popups --}}
+    <div class="modal fade" id="popupModalNoSession" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-light" id="popupModalLabel">SneakPeak <i class="bi bi-gear"></i></h5>
+                    <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-unstyled text-center">
+                        <li><a href="/Login" class="text-dark"><em>Iniciar Sesión</a></em></li>
+                        <li><a href="/help" class="text-dark"><em>Ayuda</em></a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary bg-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--popup con sesion-->
+    <div class="modal fade" id="popupModalWithSession" tabindex="-1" role="dialog" aria-labelledby="popupModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-light" id="popupModalLabel">SneakPeak <i class="bi bi-gear"></i></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-group list-unstyled text-center">
+                        <li><a href="/help" class="text-dark"><em>Ayuda</em></a></li>
+                        <li><a href="/config" class="text-dark"><em>Configuración</em></a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" href="#logout" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>

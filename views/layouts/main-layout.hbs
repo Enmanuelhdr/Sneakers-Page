@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     {{#if siteActive}}
     <link rel="stylesheet" href="/Css/Styles/style_site.css">
+    <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
     {{/if}}
     {{#if signUpActive}}
     <link rel="stylesheet" href="/Css/Styles/style_SignUp.css">
@@ -18,6 +19,21 @@
     {{#if loginActive}}
     <link rel="stylesheet" href="/Css/Styles/style_Login.css">
     {{/if}}
+    {{#if AboutUsActive}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/heroicons@1.0.4/css/heroicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Css/Styles/style_aboutUs.css">
+    {{/if}}
+    {{#if sneakersPage}}
+    <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
+    {{/if}}
+    {{#if sneakerInfo}}
+    <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
+    {{/if}}
+    {{#if sneakerCrud}}
+    <link rel="stylesheet" href="/Css/Styles/style_SneakerCrud.css">
+    {{/if}}
+
 </head>
 
 <body>
@@ -34,6 +50,10 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="/Js/Bootstrap/js/bootstrap.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     {{#if signUpActive}}
