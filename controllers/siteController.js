@@ -1,4 +1,5 @@
 const Sneaker = require("../models/site/sneakers");
+const { Op } = require('sequelize');
 
 exports.GetSite = async (req, res, next) => {
 
@@ -9,7 +10,7 @@ exports.GetSite = async (req, res, next) => {
 
     res.render("site/site", {
       pageTitle: "SneakPeak",
-      sneakers:sneakers,
+      sneakers: sneakers,
       sneakersPage: true,
       headerBar: true,
       footerBar: true,
@@ -29,7 +30,7 @@ exports.GetSneakers = async (req, res, next) => {
 
     res.render("site/sneakers", {
       pageTitle: "SneakPeak",
-      sneakers:sneakers,
+      sneakers: sneakers,
       sneakersPage: true,
       headerBar: true,
       footerBar: true,
@@ -139,14 +140,14 @@ exports.GetAboutUs = (req, res, next) => {
   });
 };
 
-exports.GetCrudSneakers= async (req, res, next) => {
-    res.render("site/sneakerCrud", {
-      pageTitle: "SneakersCrud",
-      sneakerCrud: true,
-      headerBar: true,
-      footerBar: true,
-      // RegionActive: true,
-    });
+exports.GetCrudSneakers = async (req, res, next) => {
+  res.render("site/sneakerCrud", {
+    pageTitle: "SneakersCrud",
+    sneakerCrud: true,
+    headerBar: true,
+    footerBar: true,
+    // RegionActive: true,
+  });
 };
 
 exports.GetSneakersInfo = async (req, res, next) => {
@@ -157,4 +158,56 @@ exports.GetSneakersInfo = async (req, res, next) => {
     footerBar: true,
     // RegionActive: true,
   });
+};
+
+exports.GetSearch = async (req, res, next) => {
+  try {
+    let user_search = req.query.search;
+
+    // Buscar en el campo 'model'
+    let sneaker_search = await Sneaker.findAll({
+      where: {
+        model: {
+          [Op.like]: `%${user_search}%`
+        }
+      }
+    });
+
+    // Si no se encuentra nada en el campo 'model', buscar en el campo 'brand'
+    if (sneaker_search.length === 0) {
+      sneaker_search = await Sneaker.findAll({
+        where: {
+          brand: {
+            [Op.like]: `%${user_search}%`
+          }
+        }
+      });
+    }
+
+    const sneakers = sneaker_search.map((result) => result.dataValues);
+
+    if (sneakers.length === 0) {
+      // Si no se encuentra nada en ninguno de los dos campos, redirigir a la vista de error
+      res.render("templates/error", {
+        pageTitle: "Error",
+        errorMessage: "No se encontraron resultados para la búsqueda.",
+        headerBar: true,
+        footerBar: true,
+      });
+    } else {
+      // Mostrar los resultados de la búsqueda
+      res.render("site/search", {
+        pageTitle: "Sneakers search",
+        sneakerInfo: true,
+        headerBar: true,
+        footerBar: true,
+        sneakers: sneakers
+      });
+    }
+
+  } catch (error) {
+    console.error(error);
+    // Manejar el error adecuadamente, por ejemplo, enviar una respuesta de error al cliente.
+    res.status(500).send("Internal Server Error");
+  }
 };

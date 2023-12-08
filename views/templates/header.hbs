@@ -26,7 +26,7 @@
                     </a>
                 </li>
             </ul>
-            <form class="form-inline ml-auto">
+            <form class="form-inline ml-auto" action="/search" method="get">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         {{#if logueado}}
@@ -45,7 +45,7 @@
                         </a>
                     </li>
                 </ul>
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                     <i class="bi bi-search"></i>
                 </button>

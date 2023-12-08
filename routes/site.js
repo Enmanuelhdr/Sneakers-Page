@@ -9,5 +9,6 @@ router.get("/Sneaker",siteController.GetSneakers);
 router.get("/Sneaker-info",siteController.GetSneakersInfo);
 router.get("/SneakerCrud",siteController.GetCrudSneakers);
 router.post("/add-sneaker",siteController.PostAddSneaker);
+router.get("/search",siteController.GetSearch);
 
 module.exports = router;
