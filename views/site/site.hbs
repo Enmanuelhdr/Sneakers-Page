@@ -43,15 +43,16 @@
   <div id="sneaker">
     {{#each sneakers as |sneaker|}}
     <div class="card">
-      <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}">
+      <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px;">
       <div class="card-content">
         <h3>Modelo: {{sneaker.model}}</h3>
         <p>Marca: {{sneaker.brand}}</p>
         <p>Precio: ${{sneaker.price}}</p>
         <p class="availability">Disponible en stock</p>
       </div>
+      <button type="button" class="btn btn-secondary mb-2 mx-3">Comprar</button>
     </div>
-  {{/each}}
+    {{/each}}
 
   </div>
 </main>
