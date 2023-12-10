@@ -123,7 +123,7 @@ exports.PostEditSneaker = async (req, res, next) => {
 exports.PostDeleteRegion = async (req, res, next) => {
   const sneakerId = req.body.sneakerId;
   try {
-    await Sneaker.update({ status: 0 }, { where: { id: regionId } });
+    await Sneaker.update({ status: 0 }, { where: { id: sneakerId } });
 
     return res.redirect("/");
   } catch (error) {
@@ -144,9 +144,8 @@ exports.GetCrudSneakers= async (req, res, next) => {
     res.render("site/sneakerCrud", {
       pageTitle: "SneakersCrud",
       sneakerCrud: true,
-      headerBar: true,
-      footerBar: true,
-      // RegionActive: true,
+      headerBar: false,
+      footerBar: false,
     });
 };
 
@@ -156,6 +155,5 @@ exports.GetSneakersInfo = async (req, res, next) => {
     sneakerInfo: true,
     headerBar: true,
     footerBar: true,
-    // RegionActive: true,
   });
 };
