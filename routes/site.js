@@ -12,5 +12,6 @@ router.get("/Sneaker-info/",siteController.GetSneakersInfo);
 router.get("/SneakerCrud",siteController.GetCrudSneakers);
 router.post("/add-sneaker",siteController.PostAddSneaker);
 router.get("/search",siteController.GetSearch); 
+router.get("/tetsuo",siteController.pruebaTetsuo); 
 
 module.exports = router;

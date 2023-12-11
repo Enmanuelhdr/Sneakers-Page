@@ -263,3 +263,12 @@ exports.GetSearch = async (req, res, next) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.pruebaTetsuo = async (req, res, next) => {
+  res.render("site/tetsuo", {
+    pageTitle: "tetsuo",
+    tetsuo: true,
+    headerBar: true,
+    footerBar: true,
+  });
+};
