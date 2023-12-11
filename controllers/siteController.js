@@ -14,7 +14,6 @@ exports.GetSite = async (req, res, next) => {
       sneakersPage: true,
       headerBar: true,
       footerBar: true,
-      hasSneakers: sneakers.length > 0,
       // RegionActive: true,
     });
   } catch (error) {
@@ -23,22 +22,74 @@ exports.GetSite = async (req, res, next) => {
 };
 
 exports.GetSneakers = async (req, res, next) => {
+
   try {
-    const result = await Sneaker.findAll();
+    let filter_page = req.query.filter;
 
-    const sneakers = result.map((result) => result.dataValues);
+    if (!filter_page) {
+      // Si filter_page es undefined o vacío, asignar un valor predeterminado o manejar el caso según tus necesidades
+      filter_page = 0; // Puedes cambiar 'default_value' según tus necesidades
+    }
 
-    res.render("site/sneakers", {
-      pageTitle: "SneakPeak",
-      sneakers: sneakers,
-      sneakersPage: true,
-      headerBar: true,
-      footerBar: true,
-      hasSneakers: sneakers.length > 0,
-      // RegionActive: true,
+    // Buscar en el campo 'brand'
+    let filter_search = await Sneaker.findAll({
+      where: {
+        brand: filter_page
+      }
     });
+
+    // Si no se encuentra nada en el campo 'brand', buscar en el campo 'gender'
+    if (filter_search.length === 0) {
+      filter_search = await Sneaker.findAll({
+        where: {
+          gender: filter_page  
+        }
+      });
+    }
+
+    // Si no se encuentra nada en el campo 'gender', buscar en el campo 'material'
+    if (filter_search.length === 0) {
+      filter_search = await Sneaker.findAll({
+        where: {
+          material: filter_page  
+        }
+      });
+    }
+
+    const sneakers = filter_search.map((result) => result.dataValues);
+
+    console.log('parte 3 sneakers', sneakers);
+
+    if (sneakers.length === 0) {
+      // Si no se encuentra nada en ninguno de los dos campos, redirigir a la vista de error
+      const result = await Sneaker.findAll();
+
+      const sneakers = result.map((result) => result.dataValues);
+
+      res.render("site/sneakers", {
+        pageTitle: "SneakPeak",
+        sneakers: sneakers,
+        sneakersPage: true,
+        headerBar: true,
+        footerBar: true,
+        hasSneakers: sneakers.length > 0,
+        // RegionActive: true,
+      });
+    } else {
+      // Mostrar los resultados de la búsqueda
+      res.render("site/sneakers", {
+        pageTitle: "Sneakers search",
+        sneakerInfo: true,
+        headerBar: true,
+        footerBar: true,
+        sneakers: sneakers
+      });
+    }
+
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    // Manejar el error adecuadamente, por ejemplo, enviar una respuesta de error al cliente.
+    res.status(500).send("Internal Server Error");
   }
 };
 
@@ -70,6 +121,7 @@ exports.PostAddSneaker = async (req, res, next) => {
       description,
       stock,
     });
+    req.flash("success", "Sneaker added successfully");
     return res.redirect("/SneakerCrud");
   } catch (error) {
     console.log(error);
@@ -123,7 +175,7 @@ exports.PostEditSneaker = async (req, res, next) => {
 exports.PostDeleteRegion = async (req, res, next) => {
   const sneakerId = req.body.sneakerId;
   try {
-    await Sneaker.update({ status: 0 }, { where: { id: regionId } });
+    await Sneaker.update({ status: 0 }, { where: { id: sneakerId } });
 
     return res.redirect("/");
   } catch (error) {
@@ -144,19 +196,17 @@ exports.GetCrudSneakers = async (req, res, next) => {
   res.render("site/sneakerCrud", {
     pageTitle: "SneakersCrud",
     sneakerCrud: true,
-    headerBar: true,
-    footerBar: true,
-    // RegionActive: true,
+    headerBar: false,
+    footerBar: false,
   });
 };
 
 exports.GetSneakersInfo = async (req, res, next) => {
-  res.render("site/sneaker-info", {
-    pageTitle: "Sneakers",
+  res.render("site/sneakerview", {
+    pageTitle: "Sneakers Info",
     sneakerInfo: true,
     headerBar: true,
     footerBar: true,
-    // RegionActive: true,
   });
 };
 

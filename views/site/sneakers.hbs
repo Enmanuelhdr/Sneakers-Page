@@ -1,38 +1,91 @@
 <main>
-    <!-- Tarjeta 1 -->
-    <h2 class="m-5"> Sneakers </h2>
-    <hr>
-    <div id="sneaker">
-        <div class="card">
-            <img src="sneaker1.jpg" alt="Sneaker 1">
-            <div class="card-content">
-                <h3>Modelo: Air Max 90</h3>
-                <p>Marca: Nike</p>
-                <p>Precio: $120</p>
-                <p class="availability">Disponible en stock</p>
-            </div>
-        </div>
+  <div>
+    <h2 class="m-4"> Sneakers </h2>
+    {{!-- <a href="/SneakerCrud" class=" ms-3 btn btn-primary">Agregar Sneaker</a> --}}
+  </div>
+  <hr>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card" id="filters-card">
+          <div class="card-body">
+            <h4 class="card-title">Filtros</h4>
 
-        <!-- Tarjeta 2 -->
-        <div class="card">
-            <img src="sneaker2.jpg" alt="Sneaker 2">
-            <div class="card-content">
-                <h3>Modelo: Superstar</h3>
-                <p>Marca: Adidas</p>
-                <p>Precio: $90</p>
-                <p class="unavailability">Agotado</p>
-            </div>
-        </div>
+            <form action="/Sneaker" method="get">
+              <!-- Filtro por genero(sexo) -->
+              <div class="form-group genero">
+                <label class="labelfiltro">Género</label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterHombre" name="filter" value="Hombre">
+                  <label class="form-check-label" for="filterHombre">Hombre</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterMujer" name="filter" value="Mujer">
+                  <label class="form-check-label" for="filterMujer">Mujer</label>
+                </div>
+              </div>
 
-        <!-- Tarjeta 3 -->
-        <div class="card">
-            <img src="sneaker3.jpg" alt="Sneaker 3">
-            <div class="card-content">
-                <h3>Modelo: RS-X</h3>
-                <p>Marca: Puma</p>
-                <p>Precio: $80</p>
-                <p class="availability">Disponible en stock</p>
-            </div>
+              <!-- Filtro por material -->
+              <div class="form-group material">
+                <label class="labelfiltro">Material</label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterCuero" name="filter" value="Cuero">
+                  <label class="form-check-label" for="filterCuero">Cuero</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterCueroSintetico" name="filter" value="Cuero_Sintetico">
+                  <label class="form-check-label" for="filterCueroSintetico">Cuero Sintético</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterPlastico" name="filter" value="Plastico">
+                  <label class="form-check-label" for="filterPlastico">Plástico</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterTela" name="filter" value="Tela">
+                  <label class="form-check-label" for="filterTela">Tela</label>
+                </div>
+              </div>
+
+              <!-- Filtro por marca -->
+              <div class="form-group marca">
+                <label class="labelfiltro">Marca</label>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterNike" name="filter" value="Nike">
+                  <label class="form-check-label" for="filterNike">Nike</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterJordan" name="filter" value="Jordan">
+                  <label class="form-check-label" for="filterJordan">Jordan</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterAdidas" name="filter" value="Adidas">
+                  <label class="form-check-label" for="filterAdidas">Adidas</label>
+                </div>
+              </div>
+
+              <!-- Boton de Aplicar -->
+              <button class="btn btn-primary" type="submit">Aplicar Filtros</button>
+            </form>
+
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-9">
+        <div id="sneaker">
+          {{#each sneakers as |sneaker|}}
+          <div class="card">
+            <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px">
+            <div class="card-content">
+              <h3>Modelo: {{sneaker.model}}</h3>
+              <p>Marca: {{sneaker.brand}}</p>
+              <p>Precio: ${{sneaker.price}}</p>
+              <p class="availability">Disponible en stock</p>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
     </div>
+  </div>
 </main>
