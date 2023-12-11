@@ -122,6 +122,7 @@ exports.PostAddSneaker = async (req, res, next) => {
       stock,
     });
     req.flash("success", "Sneaker added successfully");
+    req.flash("success", "Sneaker added successfully");
     return res.redirect("/SneakerCrud");
   } catch (error) {
     console.log(error);
@@ -196,8 +197,9 @@ exports.GetCrudSneakers = async (req, res, next) => {
   res.render("site/sneakerCrud", {
     pageTitle: "SneakersCrud",
     sneakerCrud: true,
-    headerBar: false,
-    footerBar: false,
+    headerBar: true,
+    footerBar: true,
+    // RegionActive: true,
   });
 };
 
