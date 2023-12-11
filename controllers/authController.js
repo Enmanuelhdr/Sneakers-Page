@@ -83,6 +83,7 @@ exports.PostLogin = async (req, res, next) => {
 
       // Crear token al iniciar sesion
       return req.session.save((err) => {
+        const session_state =true;
         if (err) {
           console.error("Error al guardar la sesión:", err);
           res.status(500).send("Error interno del servidor");
@@ -110,11 +111,16 @@ exports.PostLogin = async (req, res, next) => {
   }
 };
 
-exports.PostLogout = (req, res, next) => {
+exports.PostLogout = (req, res) => {
   req.session.destroy((err) => {
+    session_state = false 
     console.log(err);
+    if(!session_state){
+      res.clearCookie('token')
+    }
     res.redirect("/");
   });
+  return session_state;
 };
 
 exports.GetSite = (req, res, next) => {
