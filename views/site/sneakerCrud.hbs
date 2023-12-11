@@ -1,0 +1,33 @@
+<div id="form-container">
+    <form enctype="multipart/form-data" method="post" action="{{#if editMode}}/edit-sneaker{{else}}/add-sneaker{{/if}}" >
+    <label for="imagen">Imagen:</label>
+    <input type="file" id="image" name="image" required>
+
+    <label for="modelo">Modelo:</label>
+    <input type="text" id="model" name="model" required>
+
+    <label for="marca">Marca:</label>
+    <input type="text" id="brand" name="brand">
+
+    <label for="genero">Género:</label>
+    <input type="number" id="gender" name="gender"required>
+
+    <label for="material">Material:</label>
+    <input type="text" id="material" name="material" required>
+
+    <label for="precio">Precio:</label>
+    <input type="number" id="price" name="price" required>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" name="stock" required>
+
+    <a href="/Sneaker" class="button">Cancelar</a>
+    <button type="submit" class="button">Guardar</button>
+
+    </form>
+
+    <div id="mensaje" class="success-message"></div>
+</div>

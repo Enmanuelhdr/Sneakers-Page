@@ -6,8 +6,6 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
-const cookieParser = require('cookie-parser');
-
 
 const User = require("./models/auth/User");
 
@@ -18,8 +16,8 @@ const errorController = require("./controllers/ErrorController");
 
 
 const authRouter = require("./routes/auth");
+const siteRouter = require("./routes/site");
 
-app.use(cookieParser());
 
 app.engine(
     "hbs",
@@ -27,6 +25,7 @@ app.engine(
       layoutsDir: "views/layouts/",
       defaultLayout: "main-layout",
       extname: "hbs",
+      partialsDir: "views/templates"
     })
   );
 
@@ -71,6 +70,10 @@ app.use(async (req,res,next)=>{
   res.locals.hasSuccessMessages = success.length > 0;
   res.locals.warningMessages = warning;
   res.locals.hasWarningMessages = warning.length > 0;
+
+  if (req.session.isLoggedIn) {
+    res.locals.LoggedIn = "1";
+}
   next();
 })
 
@@ -83,10 +86,11 @@ const imageStorage = multer.diskStorage({
   }
 });
 
-app.use(multer({ storage: imageStorage }).single("Image"));
+app.use(multer({ storage: imageStorage }).single("image"));
 
 
 app.use(authRouter);
+app.use(siteRouter);
 app.use("/", errorController.Get404);
 
 

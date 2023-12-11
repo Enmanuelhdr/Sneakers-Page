@@ -7,6 +7,8 @@ exports.GetSignUp = (req, res, next) => {
   res.render("auth/signUp", {
     pageTitle: "Sign Up",
     signUpActive: true,
+    headerBar: false,
+    footerBar: false
   });
 };
 
@@ -14,7 +16,6 @@ exports.PostSignUp = async (req, res, next) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const dateOfBirth = req.body.dateOfBirth;
-  // const profilePicture = req.files.profilePicture;
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
@@ -23,19 +24,20 @@ exports.PostSignUp = async (req, res, next) => {
 
   if (password !== confirmPassword) {
     req.flash("errors", "The password doesn't match");
-    return res.redirect("/contrasena");
+    return res.redirect("/signup");
   }
 
   try {
     const result = await User.findOne({ where: { email } });
+
     if (result) {
       req.flash("errors", "This email is taken, try another.");
-      return res.redirect("/correo");
+      return res.redirect("/signup");
     }
   } catch (err) {
     console.log(err);
     req.flash("errors", "An error has occurred. Contact the administrator");
-    return res.redirect("/eploto");
+    return res.redirect("/signup");
   }
 
   try {
@@ -44,17 +46,18 @@ exports.PostSignUp = async (req, res, next) => {
     await User.create({
       firstName,
       lastName,
-      // imagePath: "/" + profilePicture[0].path,
       dateOfBirth,
       email,
       password: hashedPassword,
       phone,
       gender,
     });
+    req.flash("success", "User created successfully");
+    return res.redirect("/login");
   } catch (err) {
     console.log(err);
     req.flash("errors", "An error has occurred. Contact the administrator");
-    return res.redirect("/");
+    return res.redirect("/signup");
   }
 };
 
@@ -62,6 +65,8 @@ exports.GetLogin = (req, res, next) => {
   res.render("auth/Login", {
     pageTitle: "Login",
     loginActive: true,
+    headerBar: false,
+    footerBar: false
   });
 };
 
@@ -72,16 +77,16 @@ exports.PostLogin = async (req, res, next) => {
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
+      console.log("User not found. Redirecting to home page");
       req.flash("errors", "Invalid Login, Please try again.");
-      return res.redirect("/nocorreo");
+      return res.redirect("/");
     }
 
     const result = await bcrypt.compare(password, user.password);
     if (result) {
+      console.log("Login successful. Setting session variables.");
       req.session.isLoggedIn = true;
       req.session.user = user;
-
-      // Crear token al iniciar sesion
       return req.session.save((err) => {
         const session_state =true;
         if (err) {
@@ -103,11 +108,11 @@ exports.PostLogin = async (req, res, next) => {
       });
     }
     req.flash("errors", "Invalid Login, Please try again.");
-    res.redirect("/error1");
+    res.redirect("/");
   } catch (err) {
     console.log(err);
     req.flash("errors", "An error has occurred. Contact the administrator");
-    return res.redirect("/error2");
+    return res.redirect("/");
   }
 };
 

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: url(img/stock.jpg);
+  background: url(../../img/stock.jpg);
   background-size: cover;
   background-position: center;
   font-family: 'Oswald', sans-serif;
@@ -9,6 +9,7 @@ body {
 }
 
 .container {
+  margin-top: 9%;
   width: 100%;
   height: 100vh;
   display: flex;

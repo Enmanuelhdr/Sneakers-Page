@@ -1,0 +1,22 @@
+/* Diseño de espaceados */
+
+#filters-card {
+    margin-top: 30px;
+  }
+
+.material {
+    margin-top: 10px;
+
+}
+.genero {
+    margin-top: 10px;
+}
+
+.labelfiltro {
+    font-weight: bold;
+ 
+}
+.marca {
+    margin-top: 10px;
+    margin-bottom: 10px ;
+}

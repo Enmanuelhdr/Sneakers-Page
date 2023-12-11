@@ -8,6 +8,7 @@ const rutaLoginValidacion = async (req, res, next) => {
         res.locals.logueado = false;
         return res.redirect('/Login')
     }
+    
     // comprobar el token
     const usuario = await User.findByPk(token.id)
     
