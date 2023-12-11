@@ -193,6 +193,15 @@ exports.GetAboutUs = (req, res, next) => {
   });
 };
 
+exports.GetConsultasPreguntas = async (req, res, next) => {
+  res.render("site/ConsultasPreguntas", {
+    pageTitle: "Consultas y preguntas",
+    ConsultaPregunta: true,
+    headerBar: true,
+    footerBar: true,
+  });
+};
+
 exports.GetCrudSneakers = async (req, res, next) => {
   res.render("site/sneakerCrud", {
     pageTitle: "SneakersCrud",
