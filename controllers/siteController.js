@@ -122,6 +122,7 @@ exports.PostAddSneaker = async (req, res, next) => {
       stock,
     });
     req.flash("success", "Sneaker added successfully");
+    req.flash("success", "Sneaker added successfully");
     return res.redirect("/SneakerCrud");
   } catch (error) {
     console.log(error);
@@ -192,12 +193,31 @@ exports.GetAboutUs = (req, res, next) => {
   });
 };
 
+exports.GetConsultasPreguntas = async (req, res, next) => {
+  res.render("site/ConsultasPreguntas", {
+    pageTitle: "Consultas y preguntas",
+    ConsultaPregunta: true,
+    headerBar: true,
+    footerBar: true,
+  });
+};
+
+exports.GetDevoluciones = async (req, res, next) => {
+  res.render("site/Devoluciones", {
+    pageTitle: "Devoluciones",
+    Devoluciones: true,
+    headerBar: true,
+    footerBar: true,
+  });
+};
+
 exports.GetCrudSneakers = async (req, res, next) => {
   res.render("site/sneakerCrud", {
     pageTitle: "SneakersCrud",
     sneakerCrud: true,
-    headerBar: false,
-    footerBar: false,
+    headerBar: true,
+    footerBar: true,
+    // RegionActive: true,
   });
 };
 
@@ -260,4 +280,13 @@ exports.GetSearch = async (req, res, next) => {
     // Manejar el error adecuadamente, por ejemplo, enviar una respuesta de error al cliente.
     res.status(500).send("Internal Server Error");
   }
+};
+
+exports.pruebaTetsuo = async (req, res, next) => {
+  res.render("site/tetsuo", {
+    pageTitle: "tetsuo",
+    tetsuo: true,
+    headerBar: true,
+    footerBar: true,
+  });
 };
