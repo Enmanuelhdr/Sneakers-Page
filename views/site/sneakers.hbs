@@ -72,6 +72,11 @@
       </div>
 
       <div class="col-md-9">
+        {{#if notFound}}
+        <center>
+          <h2>No se encuentra en nuestro catalogo el filtro seleccionado</h2>
+        </center>
+        {{/if}}
         <div id="sneaker">
           {{#each sneakers as |sneaker|}}
           <div class="card">

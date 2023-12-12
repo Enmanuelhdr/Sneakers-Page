@@ -29,6 +29,19 @@ exports.GetSneakers = async (req, res, next) => {
     if (!filter_page) {
       // Si filter_page es undefined o vacío, asignar un valor predeterminado o manejar el caso según tus necesidades
       filter_page = 0; // Puedes cambiar 'default_value' según tus necesidades
+      const result = await Sneaker.findAll();
+
+      const sneakers = result.map((result) => result.dataValues);
+
+      res.render("site/sneakers", {
+        pageTitle: "SneakPeak",
+        sneakers: sneakers,
+        sneakersPage: true,
+        headerBar: true,
+        footerBar: true,
+        hasSneakers: sneakers.length > 0,
+        // RegionActive: true,
+      });
     }
 
     // Buscar en el campo 'brand'
@@ -62,17 +75,12 @@ exports.GetSneakers = async (req, res, next) => {
 
     if (sneakers.length === 0) {
       // Si no se encuentra nada en ninguno de los dos campos, redirigir a la vista de error
-      const result = await Sneaker.findAll();
-
-      const sneakers = result.map((result) => result.dataValues);
-
       res.render("site/sneakers", {
         pageTitle: "SneakPeak",
-        sneakers: sneakers,
+        notFound: true,
         sneakersPage: true,
         headerBar: true,
         footerBar: true,
-        hasSneakers: sneakers.length > 0,
         // RegionActive: true,
       });
     } else {
