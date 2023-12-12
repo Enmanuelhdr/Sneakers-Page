@@ -320,6 +320,7 @@ exports.GetCart = async (req, res, next) => {
 };
 
 exports.PostCart = async (req, res, next) => {
+ 
   const sneakerId = req.body.idSneaker;
   const size = req.body.options_base;
   const userId = req.user.id;

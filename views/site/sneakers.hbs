@@ -88,7 +88,7 @@
         <div id="sneaker">
           {{#each sneakers as |sneaker|}}
           <div class="card">
-            <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px">
+            <a href="/Sneaker-info/{{sneaker.id}}"><img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px"></a>
             <div class="card-content">
               <h3>Modelo: {{sneaker.model}}</h3>
               <p>Marca: {{sneaker.brand}}</p>
