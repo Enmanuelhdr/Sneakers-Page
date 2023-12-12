@@ -17,4 +17,7 @@ router.get("/ConsultasPreguntas",siteController.GetConsultasPreguntas);
 router.get("/Cart",siteController.GetCart);
 router.post("/Cart",siteController.PostCart);
 router.get("/Checkout",siteController.GetCheckout);
+router.get("/ConsultasPreguntas",siteController.GetConsultasPreguntas); 
+router.get("/Devoluciones",siteController.GetDevoluciones);
+
 module.exports = router;

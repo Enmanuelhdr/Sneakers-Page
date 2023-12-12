@@ -16,8 +16,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+<<<<<<< HEAD
                     <a class="nav-link" href="/Sneaker?filter=Jordan"><img src="/img/Jumpman logo.png" width="40" height="40"
                             alt="Jordan" class="img-fluid">
+=======
+                    <a class="nav-link" href="/Sneaker?filter=Jordan"><img src="./img/Jumpman logo.png" width="40"
+                            height="40" alt="Jordan" class="img-fluid">
+>>>>>>> 4effa4bb2ce5dc0a9caf5b06b84878df596cb103
                     </a>
                 </li>
                 <li class="nav-item">
@@ -25,9 +30,16 @@
                         <img src="/img/Adidas Logo.png" width="50" height="50" alt="Adidas" class="img-fluid">
                     </a>
                 </li>
+
             </ul>
+
             <form class="form-inline ml-auto" action="/search" method="get">
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Sneaker?filter=Adidas">
+                            <p>Catalogo</p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         {{#if LoggedIn}}
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalWithSession">
@@ -45,7 +57,8 @@
                         </a>
                     </li>
                 </ul>
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+                    name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                     <i class="bi bi-search"></i>
                 </button>
@@ -94,11 +107,11 @@
                     </ul>
                 </div>
                 <form action="/logout" method="post">
-                <div class="modal-footer justify-content-center">
-                    <button type="submit" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
-                </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
+                    </div>
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
 </header>

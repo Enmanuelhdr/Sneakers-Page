@@ -16,11 +16,11 @@
               <div class="form-group genero">
                 <label class="labelfiltro">Género</label>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="filterHombre" name="filter" value="Hombre">
+                  <input type="checkbox" class="form-check-input" id="filterHombre" name="filter" value="1">
                   <label class="form-check-label" for="filterHombre">Hombre</label>
                 </div>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="filterMujer" name="filter" value="Mujer">
+                  <input type="checkbox" class="form-check-input" id="filterMujer" name="filter" value="2">
                   <label class="form-check-label" for="filterMujer">Mujer</label>
                 </div>
               </div>
@@ -44,6 +44,14 @@
                   <input type="checkbox" class="form-check-input" id="filterTela" name="filter" value="Tela">
                   <label class="form-check-label" for="filterTela">Tela</label>
                 </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterTela" name="filter" value="Cotton">
+                  <label class="form-check-label" for="filterTela">Algodon</label>
+                </div>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="filterTela" name="filter" value="leather">
+                  <label class="form-check-label" for="filterTela">Cuero</label>
+                </div>
               </div>
 
               <!-- Filtro por marca -->
@@ -63,26 +71,34 @@
                 </div>
               </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="card">
-            <img src="sneaker2.jpg" alt="Sneaker 2">
-            <div class="card-content">
-                <h3>Modelo: Superstar</h3>
-                <p>Marca: Adidas</p>
-                <p>Precio: $90</p>
-                <p class="unavailability">Agotado</p>
-            </div>
-        </div>
+              <!-- Boton de Aplicar -->
+              <button class="btn btn-primary" type="submit">Aplicar Filtros</button>
+            </form>
 
-        <!-- Tarjeta 3 -->
-        <div class="card">
-            <img src="sneaker3.jpg" alt="Sneaker 3">
-            <div class="card-content">
-                <h3>Modelo: RS-X</h3>
-                <p>Marca: Puma</p>
-                <p>Precio: $80</p>
-                <p class="availability">Disponible en stock</p>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-9">
+        {{#if notFound}}
+        <center>
+          <h2>Lo sentimos, actualmente no contamos con modelos de tenis de ese tipo</h2>
+        </center>
+        {{/if}}
+        <div id="sneaker">
+          {{#each sneakers as |sneaker|}}
+          <div class="card">
+            <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px">
+            <div class="card-content">
+              <h3>Modelo: {{sneaker.model}}</h3>
+              <p>Marca: {{sneaker.brand}}</p>
+              <p>Precio: ${{sneaker.price}}</p>
+              <p class="availability">Disponible en stock</p>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
     </div>
+  </div>
 </main>
