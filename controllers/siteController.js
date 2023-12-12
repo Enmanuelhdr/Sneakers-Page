@@ -202,6 +202,15 @@ exports.GetConsultasPreguntas = async (req, res, next) => {
   });
 };
 
+exports.GetDevoluciones = async (req, res, next) => {
+  res.render("site/Devoluciones", {
+    pageTitle: "Devoluciones",
+    Devoluciones: true,
+    headerBar: true,
+    footerBar: true,
+  });
+};
+
 exports.GetCrudSneakers = async (req, res, next) => {
   res.render("site/sneakerCrud", {
     pageTitle: "SneakersCrud",
