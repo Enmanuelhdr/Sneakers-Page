@@ -1,77 +1,33 @@
 <div id="form-container">
+    <form enctype="multipart/form-data" method="post" action="{{#if editMode}}/edit-sneaker{{else}}/add-sneaker{{/if}}" >
     <label for="imagen">Imagen:</label>
-    <input type="text" id="imagen" required>
+    <input type="file" id="image" name="image" required>
 
     <label for="modelo">Modelo:</label>
-    <input type="text" id="modelo" required>
+    <input type="text" id="model" name="model" required>
 
     <label for="marca">Marca:</label>
-    <input type="text" id="marca" required>
+    <input type="text" id="brand" name="brand">
 
     <label for="genero">Género:</label>
-    <input type="text" id="genero" required>
+    <input type="text" id="gender" name="gender"required>
 
     <label for="material">Material:</label>
-    <input type="text" id="material" required>
+    <input type="text" id="material" name="material" required>
 
     <label for="precio">Precio:</label>
-    <input type="number" id="precio" required>
+    <input type="number" id="price" name="price" required>
 
     <label for="descripcion">Descripción:</label>
-    <textarea id="descripcion" required></textarea>
+    <textarea id="description" name="description" required></textarea>
 
     <label for="stock">Stock:</label>
-    <input type="number" id="stock" required>
+    <input type="number" id="stock" name="stock" required>
 
-    <button onclick="agregarRegistro()">Guardar</button>
-    <button onclick="limpiarFormulario()">Cancelar</button>
+    <a href="/Sneaker" class="button">Cancelar</a>
+    <button type="submit" class="button">Guardar</button>
+
+    </form>
 
     <div id="mensaje" class="success-message"></div>
-</div>
-<div class="tabla-container">
-    <table id="tabla">
-        <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Modelo</th>
-                <th>Marca</th>
-                <th>Género</th>
-                <th>Material</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <td>
-                    Imagen1
-                </td>
-                <td>
-                    Modelo1
-                </td>
-                <td>
-                    Marca1
-                </td>
-                <td>
-                    Género1
-                </td>
-                <td>
-                    Material1
-                </td>
-                <td>
-                    Precio1
-                </td>
-                <td>
-                    Descripcion1
-                </td>
-                <td>
-                    Stock1
-                </td>
-                <td>
-                    Acciones1
-                </td>
-            </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-    </table>
 </div>

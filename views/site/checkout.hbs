@@ -1,0 +1,51 @@
+<main>
+    <div class="container mt-5">
+    <h2 class="text-center">Métodos de Pago</h2>
+    <form id="paymentForm">
+      <div class="form-group">
+        <label for="paymentMethod">Selecciona tu método de pago:</label>
+        <select class="form-control" id="paymentMethod" name="paymentMethod">
+          <option value="Seleccionar" selected disabled>Seleccionar</option>
+          <option value="paypal">PayPal</option>
+          <option value="creditCard">Tarjeta de Crédito</option>
+        </select>
+      </div>
+
+      <!-- Contenido específico para cada método de pago -->
+      <div id="paypalDetails" class="payment-details">
+        <p>Ingresa tu información de cuenta de PayPal:</p>
+        <i class="bi bi-paypal"></i>
+        <div class="form-group">
+          <label for="emailPaypal">Email o número de teléfono</label>
+          <input type="email" class="form-control" id="emailPaypal" placeholder="ejemplo@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label for="contraseñaPaypal">Contraseña</label>
+          <input type="password" class="form-control" id="contraseñaPaypal" required>
+        </div>
+      </div>
+
+      <div id="creditCardDetails" class="payment-details">
+        <p>Ingresa los detalles de tu tarjeta de crédito:</p>
+        <div class="form-group">
+          <label for="numeroTarjeta">Número de la tarjeta</label>
+          <input type="text" class="form-control" id="numeroTarjeta" pattern="[0-9]{16}" placeholder="XXXX XXXX XXXX XXXX" required>
+        </div>
+        <div class="form-group">
+          <label for="fechaCaducidad">Fecha de caducidad</label>
+          <input type="text" class="form-control" id="fechaCaducidad" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" placeholder="MM/AA" required>
+        </div>
+        <div class="form-group">
+          <label for="titularTarjeta">Titular de la tarjeta</label>
+          <input type="text" class="form-control" id="titularTarjeta" placeholder="Pedro Luna" required>
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" class="form-control" id="cvv" placeholder="607 o 3402" pattern="[0-9]{3,4}" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3 btn-block">Confirmar Compra</button>
+    </form>
+  </div>
+</main>

@@ -1,16 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const rutaLoginValidacion = require("../middleware/validacionRutaLogin")
 const authController = require("../controllers/authController");
-const carritoController = require("../controllers/carritoController");
+const isAuth = require("../middleware/isAuth");
 
-router.get("/Sign-Up",authController.GetSignUp);
-router.post("/signUp",authController.PostSignUp);
-router.get("/Login",authController.GetLogin);
-router.post("/adentro",authController.PostLogin);
-router.get("/carrito", rutaLoginValidacion, carritoController.GetCarrito);
-router.get("/",authController.GetSite);
+router.get("/login",isAuth.Auth,authController.GetLogin);
+router.post("/login",isAuth.Auth,authController.PostLogin);
+router.post("/logout",authController.PostLogout);
+router.get("/signup",authController.GetSignUp);
+router.post("/signup",authController.PostSignUp);
 
 
 module.exports = router;

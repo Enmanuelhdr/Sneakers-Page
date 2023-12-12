@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             SneakPeak
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -11,25 +11,37 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#Nike">
-                        <img src="./img/Nike logo.svg" width="50" height="50" alt="Nike" class="img-fluid">
+                    <a class="nav-link" href="/Sneaker?filter=Nike">
+                        <img src="/img/Nike logo.svg" width="50" height="50" alt="Nike" class="img-fluid">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#Jordan"><img src="./img/Jumpman logo.png" width="40" height="40"
+<<<<<<< HEAD
+                    <a class="nav-link" href="/Sneaker?filter=Jordan"><img src="/img/Jumpman logo.png" width="40" height="40"
                             alt="Jordan" class="img-fluid">
+=======
+                    <a class="nav-link" href="/Sneaker?filter=Jordan"><img src="./img/Jumpman logo.png" width="40"
+                            height="40" alt="Jordan" class="img-fluid">
+>>>>>>> 4effa4bb2ce5dc0a9caf5b06b84878df596cb103
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#Adidas">
-                        <img src="./img/Adidas Logo.png" width="50" height="50" alt="Adidas" class="img-fluid">
+                    <a class="nav-link" href="/Sneaker?filter=Adidas">
+                        <img src="/img/Adidas Logo.png" width="50" height="50" alt="Adidas" class="img-fluid">
                     </a>
                 </li>
+
             </ul>
-            <form class="form-inline ml-auto">
+
+            <form class="form-inline ml-auto" action="/search" method="get">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        {{#if logueado}}
+                        <a class="nav-link" href="/Sneaker?filter=Adidas">
+                            <p>Catalogo</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {{#if LoggedIn}}
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#popupModalWithSession">
                             <span class="bi bi-person-circle"></span>
                         </a>
@@ -40,12 +52,13 @@
                         {{/if}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#cart">
+                        <a class="nav-link" href="/cart">
                             <span class="bi bi-cart-fill"></span>
                         </a>
                     </li>
                 </ul>
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"
+                    name="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
                     <i class="bi bi-search"></i>
                 </button>
@@ -93,9 +106,11 @@
                         <li><a href="/config" class="text-dark"><em>Configuración</em></a></li>
                     </ul>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" href="#logout" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
-                </div>
+                <form action="/logout" method="post">
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" class="btn btn-secondary bg-danger">Cerrar Sesión</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

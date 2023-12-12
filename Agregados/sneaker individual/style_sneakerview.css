@@ -1,0 +1,123 @@
+main {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+.btn.float-right {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+ 
+.main img {
+    max-width: 100%;
+    height: auto;
+}
+
+.thumbnailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.thumbnail {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#mainImage {
+    margin-right: 100px;
+    padding-right: 20px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transition: filter 0.3s ease-in-out;
+    object-fit: cover;
+}
+
+.selected {
+    filter: brightness(70%);
+}
+
+.sneakerDetails {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+}
+
+.sneakerDetails h2 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.sneakerDetails h5 {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.sneakerDetails p {
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.btn.size {
+    background-color: #fff;
+    border:1px solid #333;
+    border-radius: 5px;
+    width: 9%;
+
+}
+
+.cartBtn {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 20px;
+    width: 40%;
+    margin-top: 5%;
+}
+
+@media (max-width: 768px) {
+    .btn.float-right {
+        margin-top: 10px;
+        margin-right: 0;
+    }
+
+    .thumbnailContainer {
+        flex-direction: row;
+        overflow-x: auto;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .thumbnail {
+        margin: 5px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #mainImage {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .sneakerDetails {
+        padding: 10px;
+    }
+
+    .btn.size {
+        width: auto;
+    }
+
+    .cartBtn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+

@@ -22,12 +22,10 @@
     {{#if AboutUsActive}}
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/heroicons@1.0.4/css/heroicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/Css/Styles/style_aboutUs.css">
     {{/if}}
     {{#if sneakersPage}}
-    <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
-    {{/if}}
-    {{#if sneakerInfo}}
     <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
     {{/if}}
     {{#if sneakerCrud}}
@@ -36,6 +34,23 @@
     {{#if filter}}
     <link rel="stylesheet" href="/Css/Styles/style_Filter.css">
     {{/if}}
+    {{#if sneakerInfo}}
+    <link rel="stylesheet" href="/Css/Styles/style_sneakerview.css">
+    {{/if}}
+    {{#if tetsuo}}
+    <link rel="stylesheet" href="/Css/Styles/style_tetsuo.css">
+    {{/if}}
+    {{#if ConsultaPregunta}}
+    <link rel="stylesheet" href="/Css/Styles/style_consultasPreguntas.css">
+    {{/if}}
+    {{#if cartActive}}
+    <link rel="stylesheet" href="/Css/Styles/style_cart.css">
+    {{/if}}
+    
+    {{#if Devoluciones}}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/heroicons@1.0.4/css/heroicons.min.css" rel="stylesheet">
+    {{/if}}
 
 </head>
 
@@ -43,7 +58,37 @@
     {{#if headerBar}}
     {{> header}}
     {{/if}}
+{{#if hasWarningMessages}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <ul>
+            {{#each warningMessages}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
+    {{#if hasSuccessMessages}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <ul>
+            {{#each successMessages}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
 
+    {{#if hasErrorMessages}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <ul>
+            {{#each errorMessages}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {{/if}}
     {{{body}}}
 
     {{#if headerBar}}
@@ -58,6 +103,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {{!-- <script src="/Js/scripts/tarjetas.js"></script> --}}
 
     {{#if signUpActive}}
     <script src="/Js/scripts/script_signUp.js"></script>
@@ -65,6 +111,13 @@
     {{#if loginActive}}
     <script src="/Js/scripts/script_Login.js"></script>
     {{/if}}
+    {{#if sneakerInfo}}
+    <script src="/Js/scripts/script_sneakerInfo.js"></script>
+    {{/if}}
+    {{#if cartActive}}
+    <script src="/Js/scripts/script_cart.js"></script>
+    {{/if}}
+
 </body>
 
 </html>

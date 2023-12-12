@@ -21,7 +21,7 @@ const Sneakers = connection.define("sneakers", {
         allowNull:false,
     },
     gender:{
-        type:DataTypes.BOOLEAN,
+        type:DataTypes.STRING,
         allowNull:false,
     },
     material:{
