@@ -63,26 +63,29 @@
                 </div>
               </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="card">
-            <img src="sneaker2.jpg" alt="Sneaker 2">
-            <div class="card-content">
-                <h3>Modelo: Superstar</h3>
-                <p>Marca: Adidas</p>
-                <p>Precio: $90</p>
-                <p class="unavailability">Agotado</p>
-            </div>
-        </div>
+              <!-- Boton de Aplicar -->
+              <button class="btn btn-primary" type="submit">Aplicar Filtros</button>
+            </form>
 
-        <!-- Tarjeta 3 -->
-        <div class="card">
-            <img src="sneaker3.jpg" alt="Sneaker 3">
-            <div class="card-content">
-                <h3>Modelo: RS-X</h3>
-                <p>Marca: Puma</p>
-                <p>Precio: $80</p>
-                <p class="availability">Disponible en stock</p>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-9">
+        <div id="sneaker">
+          {{#each sneakers as |sneaker|}}
+          <div class="card">
+            <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px">
+            <div class="card-content">
+              <h3>Modelo: {{sneaker.model}}</h3>
+              <p>Marca: {{sneaker.brand}}</p>
+              <p>Precio: ${{sneaker.price}}</p>
+              <p class="availability">Disponible en stock</p>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
     </div>
+  </div>
 </main>
