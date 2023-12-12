@@ -1,8 +1,10 @@
+const Checkout = require("../models/site/cart");
+const User = require("../models/auth/User");
 const Sneaker = require("../models/site/sneakers");
-const { Op } = require('sequelize');
+const { Op } = require("sequelize");
+const Cart = require("../models/site/cart");
 
 exports.GetSite = async (req, res, next) => {
-
   try {
     const result = await Sneaker.findAll();
 
@@ -22,7 +24,6 @@ exports.GetSite = async (req, res, next) => {
 };
 
 exports.GetSneakers = async (req, res, next) => {
-
   try {
     let filter_page = req.query.filter;
 
@@ -34,16 +35,16 @@ exports.GetSneakers = async (req, res, next) => {
     // Buscar en el campo 'brand'
     let filter_search = await Sneaker.findAll({
       where: {
-        brand: filter_page
-      }
+        brand: filter_page,
+      },
     });
 
     // Si no se encuentra nada en el campo 'brand', buscar en el campo 'gender'
     if (filter_search.length === 0) {
       filter_search = await Sneaker.findAll({
         where: {
-          gender: filter_page  
-        }
+          gender: filter_page,
+        },
       });
     }
 
@@ -51,14 +52,14 @@ exports.GetSneakers = async (req, res, next) => {
     if (filter_search.length === 0) {
       filter_search = await Sneaker.findAll({
         where: {
-          material: filter_page  
-        }
+          material: filter_page,
+        },
       });
     }
 
     const sneakers = filter_search.map((result) => result.dataValues);
 
-    console.log('parte 3 sneakers', sneakers);
+    console.log("parte 3 sneakers", sneakers);
 
     if (sneakers.length === 0) {
       // Si no se encuentra nada en ninguno de los dos campos, redirigir a la vista de error
@@ -82,10 +83,9 @@ exports.GetSneakers = async (req, res, next) => {
         sneakerInfo: true,
         headerBar: true,
         footerBar: true,
-        sneakers: sneakers
+        sneakers: sneakers,
       });
     }
-
   } catch (error) {
     console.error(error);
     // Manejar el error adecuadamente, por ejemplo, enviar una respuesta de error al cliente.
@@ -121,7 +121,6 @@ exports.PostAddSneaker = async (req, res, next) => {
       description,
       stock,
     });
-    req.flash("success", "Sneaker added successfully");
     req.flash("success", "Sneaker added successfully");
     return res.redirect("/SneakerCrud");
   } catch (error) {
@@ -224,8 +223,7 @@ exports.GetSneakersInfo = async (req, res, next) => {
     sneakerInfo: true,
     headerBar: true,
     footerBar: true,
-    sneaker
-    
+    sneaker,
   });
 };
 
@@ -237,9 +235,9 @@ exports.GetSearch = async (req, res, next) => {
     let sneaker_search = await Sneaker.findAll({
       where: {
         model: {
-          [Op.like]: `%${user_search}%`
-        }
-      }
+          [Op.like]: `%${user_search}%`,
+        },
+      },
     });
 
     // Si no se encuentra nada en el campo 'model', buscar en el campo 'brand'
@@ -247,9 +245,9 @@ exports.GetSearch = async (req, res, next) => {
       sneaker_search = await Sneaker.findAll({
         where: {
           brand: {
-            [Op.like]: `%${user_search}%`
-          }
-        }
+            [Op.like]: `%${user_search}%`,
+          },
+        },
       });
     }
 
@@ -270,10 +268,9 @@ exports.GetSearch = async (req, res, next) => {
         sneakerInfo: true,
         headerBar: true,
         footerBar: true,
-        sneakers: sneakers
+        sneakers: sneakers,
       });
     }
-
   } catch (error) {
     console.error(error);
     // Manejar el error adecuadamente, por ejemplo, enviar una respuesta de error al cliente.
@@ -285,6 +282,52 @@ exports.pruebaTetsuo = async (req, res, next) => {
   res.render("site/tetsuo", {
     pageTitle: "tetsuo",
     tetsuo: true,
+    headerBar: true,
+    footerBar: true,
+  });
+};
+
+exports.GetCart = async (req, res, next) => {
+  const result = await Cart.findAll({ include: [{ model: Sneaker }] });
+  const cart = result.map((result) => result.dataValues);
+
+  console.log(cart);
+
+  res.render("site/cart", {
+    pageTitle: "Cart",
+    cartActive: true,
+    headerBar: true,
+    footerBar: true,
+    cart,
+  });
+};
+
+exports.PostCart = async (req, res, next) => {
+  const sneakerId = req.body.idSneaker;
+  const size = req.body.options_base;
+  const userId = req.user.id;
+
+  if (!size) {
+    res.redirect("Sneaker-info/" + sneakerId);
+  }
+
+  try {
+    await Cart.create({ size,userId, sneakerId });
+    return res.redirect("/cart");
+  } catch (error) {
+    console.log(error);
+    req.flash(
+      "errors",
+      "Ha ocurrido un error al momento de guardar el carrito"
+    );
+  }
+};
+
+exports.GetCheckout = async (req, res, next) => {
+
+  res.render("site/checkout", {
+    pageTitle: "Checkout",
+    cartActive: true,
     headerBar: true,
     footerBar: true,
   });

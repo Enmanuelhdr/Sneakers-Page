@@ -8,6 +8,10 @@ const multer = require("multer");
 const { v4: uuidv4 } = require("uuid");
 
 const User = require("./models/auth/User");
+const Cart = require("./models/site/cart");
+const Sneaker = require("./models/site/sneakers");
+const Checkout = require("./models/site/checkout");
+
 
 
 const app = express();
@@ -93,9 +97,18 @@ app.use(authRouter);
 app.use(siteRouter);
 app.use("/", errorController.Get404);
 
+Cart.belongsTo(User,{constraint: true,onDelete:"CASCADE"});
+User.hasMany(Cart);
+
+Cart.belongsTo(Sneaker,{constraint: true,onDelete:"CASCADE"});
+Sneaker.hasMany(Cart);
+
+Checkout.belongsTo(Cart,{constraint: true,onDelete:"CASCADE"});
+Cart.hasMany(Checkout);
+
 
 sequelize
-  .sync()
+  .sync(/* {force:true} */)
   .then((result) => {
     app.listen(3030);
   })

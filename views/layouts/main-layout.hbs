@@ -42,6 +42,10 @@
     {{#if ConsultaPregunta}}
     <link rel="stylesheet" href="/Css/Styles/style_consultasPreguntas.css">
     {{/if}}
+    {{#if cartActive}}
+    <link rel="stylesheet" href="/Css/Styles/style_cart.css">
+    {{/if}}
+    
 </head>
 
 <body>
@@ -103,6 +107,9 @@
     {{/if}}
     {{#if sneakerInfo}}
     <script src="/Js/scripts/script_sneakerInfo.js"></script>
+    {{/if}}
+    {{#if cartActive}}
+    <script src="/Js/scripts/script_cart.js"></script>
     {{/if}}
 
 </body>

@@ -13,6 +13,8 @@ router.get("/SneakerCrud",siteController.GetCrudSneakers);
 router.post("/add-sneaker",siteController.PostAddSneaker);
 router.get("/search",siteController.GetSearch); 
 router.get("/tetsuo",siteController.pruebaTetsuo); 
-router.get("/ConsultasPreguntas",siteController.GetConsultasPreguntas); 
-
+router.get("/ConsultasPreguntas",siteController.GetConsultasPreguntas);
+router.get("/Cart",siteController.GetCart);
+router.post("/Cart",siteController.PostCart);
+router.get("/Checkout",siteController.GetCheckout);
 module.exports = router;

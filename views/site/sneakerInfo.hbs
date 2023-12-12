@@ -15,34 +15,52 @@
                     <img src="./img/Nikes5.webp" width="50px" height="50px" alt="Thumbnail 4" onclick="changeImage('./img/Nikes5.webp')" class="thumbnail"> --}}
                 </div>  
                 <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" class="img-fluid">
+                <input type="hidden" name="image" value="{{sneaker.imagePath}}">
             </div>
             <div class="col-md-6 order-md-2">
+                <form action="/Cart" method="post">
+                <input type="hidden" name="idSneaker" value="{{sneaker.id}}">
                 <div class="sneakerDetails mt-lg-5">
                     <h2>{{sneaker.brand}} {{sneaker.model}}</h2>
-                    <h5>Sneakers - Unisex</h5>
+                    <h5>Sneakers - {{sneaker.gender}}</h5>
+                    <input type="hidden" value="{{sneaker.gender}}" name="gender">
+                
                     <p><bold>${{sneaker.price}}</bold></p>
+                    <input type="hidden" value="{{sneaker.price}}" name="price">
                     <section>
                         <h5>Tallas:</h5>
-                        <section class="sizeBtn">
-                            <button class="btn size">7</button>
-                            <button class="btn size">8</button>
-                            <button class="btn size">9</button>
-                            <button class="btn size">10</button>
-                            <button class="btn size">11</button>
-                            <button class="btn size">12</button>
-                        </section>
+                        <input type="radio" class="btn-check" name="options_base" value="7" id="option7" autocomplete="off">
+                        <label class="btn" for="option7">7</label>
+
+                        <input type="radio" class="btn-check" name="options_base" value="8" id="option8" autocomplete="off">
+                        <label class="btn" for="option8">8</label>
+
+                        <input type="radio" class="btn-check" name="options_base" value="9" id="option9" autocomplete="off">
+                        <label class="btn" for="option9">9</label>
+
+                        <input type="radio" class="btn-check" name="options_base" value="10" id="option10" autocomplete="off">
+                        <label class="btn" for="option10">10</label>
+
+                        <input type="radio" class="btn-check" name="options_base" value="11" id="option11" autocomplete="off">
+                        <label class="btn" for="option11">11</label>
+
+                        <input type="radio" class="btn-check" name="options_base" value="12" id="option12" autocomplete="off">
+                        <label class="btn" for="option12">12</label>
                     </section>
                     <section>
                         <h5 id="marca">Marca:</h5>
                         <p name="marcaP">{{sneaker.brand}}</p>
+                        <input type="hidden" value="{{sneaker.brand}}" name="brand">
                     </section>
                     <section>
                         <h5 id="modelo">Modelo:</h5>
                         <p name="modeloP">{{sneaker.model}}</p>
+                        <input type="hidden" value="{{sneaker.model}}" name="model">
                     </section>
                     <section>
                         <h5 id="material">Material:</h5>
                         <p name="materialP">{{sneaker.material}}</p>
+                        <input type="hidden" value="{{sneaker.material}}" name="material">
                     </section>
                     <section>
                         <h5 id="disponibilidad">Disponibilidad:</h5>
@@ -51,9 +69,11 @@
                     <section>
                         <h5 id="descripcion">Descripción:</h5>
                         <p name="descripcionP">{{sneaker.description}}</p>
+                        <input type="hidden" value="{{sneaker.description}}" name="description">
                     </section>
                     <section>
-                      <button class="cartBtn btn-dark">Agregar al carrito</button>
+                      <button type="submit" class="cartBtn btn-dark">Agregar al carrito</button>
+                      </form>
                     </section>
                 </div>
              </div>
