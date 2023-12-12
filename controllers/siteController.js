@@ -173,7 +173,7 @@ exports.PostEditSneaker = async (req, res, next) => {
   }
 };
 
-exports.PostDeleteRegion = async (req, res, next) => {
+exports.PostDeleteSneaker = async (req, res, next) => {
   const sneakerId = req.body.sneakerId;
   try {
     await Sneaker.update({ status: 0 }, { where: { id: sneakerId } });
@@ -213,11 +213,19 @@ exports.GetCrudSneakers = async (req, res, next) => {
 };
 
 exports.GetSneakersInfo = async (req, res, next) => {
-  res.render("site/sneakerview", {
+  const sneakerId = req.params.sneakerId;
+
+  const result = await Sneaker.findOne({ where: { id: sneakerId } });
+
+  const sneaker = result.dataValues;
+
+  res.render("site/sneakerInfo", {
     pageTitle: "Sneakers Info",
     sneakerInfo: true,
     headerBar: true,
     footerBar: true,
+    sneaker
+    
   });
 };
 

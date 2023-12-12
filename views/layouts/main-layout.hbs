@@ -27,9 +27,6 @@
     {{#if sneakersPage}}
     <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
     {{/if}}
-    {{#if sneakerInfo}}
-    <link rel="stylesheet" href="/Css/Styles/style_Sneaker.css">
-    {{/if}}
     {{#if sneakerCrud}}
     <link rel="stylesheet" href="/Css/Styles/style_SneakerCrud.css">
     {{/if}}
@@ -45,7 +42,6 @@
     {{#if ConsultaPregunta}}
     <link rel="stylesheet" href="/Css/Styles/style_consultasPreguntas.css">
     {{/if}}
-
 </head>
 
 <body>
@@ -105,6 +101,10 @@
     {{#if loginActive}}
     <script src="/Js/scripts/script_Login.js"></script>
     {{/if}}
+    {{#if sneakerInfo}}
+    <script src="/Js/scripts/script_sneakerInfo.js"></script>
+    {{/if}}
+
 </body>
 
 </html>

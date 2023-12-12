@@ -45,13 +45,13 @@
   <div id="sneaker">
     {{#each sneakers as |sneaker|}}
     <div class="card" data-modelo="{{sneaker.model}}">
-        <img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px">
-        <div class="card-content">
+        <a href="/Sneaker-info/{{sneaker.id}}"><img src="{{sneaker.imagePath}}" alt="{{sneaker.model}}" style="height: 210px; width: 300px"></a>
+        {{!-- <div class="card-content">
           <h3 class="modelo">Modelo: {{sneaker.model}}</h3>
           <p>Marca: {{sneaker.brand}}</p>
           <p>Precio: ${{sneaker.price}}</p>
           <p class="availability">Disponible en stock</p>
-        </div>
+        </div> --}}
     </div>
     {{/each}}
   </div>
